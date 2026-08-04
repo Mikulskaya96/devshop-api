@@ -40,6 +40,15 @@ uvicorn devshop_db:app --reload --port 8001
 
 Open Swagger UI: http://127.0.0.1:8000/docs (or :8001 for DB version)
 
+## Docker (PostgreSQL only)
+
+1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+2. Copy `.env.example` to `.env` and set `DB_PASSWORD` (same values for API and Docker)
+3. Start PostgreSQL: `docker compose up -d`
+4. Create the `courses` table if needed, then run the API: `uvicorn devshop_db:app --reload --port 8001`
+
+Passwords stay in `.env` (not committed to GitHub).
+
 ## Endpoints
 - GET /health - API health check
 - GET /courses — list courses
