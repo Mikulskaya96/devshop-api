@@ -14,9 +14,12 @@ A learning project: REST API for an online course shop.
 - psycopg2
 
 ## Files
+- `devshop_db.py` — main app (health check, includes routers)
+- `database.py` — PostgreSQL connection
+- `routers/courses.py` — course endpoints (APIRouter)
 - `devshop_courses.py` — CRUD with in-memory data
-- `devshop_db.py` — CRUD with PostgreSQL
-- `course_example.json` — example JSON body for POST
+- `course_example.json` — example JSON body for POST 
+
 
 ## Setup
 1. Install dependencies:
