@@ -36,7 +36,7 @@ def get_db_connection():
 #     return rows
 
 @app.get("/courses")
-def get_courses(max_price: int = None, active: bool = None):
+def get_courses(limit: int = None, offset: int = None, max_price: int = None, active: bool = None):
     conn = get_db_connection()
     cur = conn.cursor(cursor_factory=RealDictCursor)
     
@@ -50,6 +50,12 @@ def get_courses(max_price: int = None, active: bool = None):
     if active is not None:
         query += " AND active = %s"
         params.append(active)
+    
+    if limit is not None:
+        query += " LIMIT %s"
+        params.append(limit)
+        query += " OFFSET %s"
+        params.append(offset if offset is not None else 0)
         
     cur.execute(query,tuple(params))
     rows = cur.fetchall()
