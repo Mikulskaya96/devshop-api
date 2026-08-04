@@ -38,6 +38,7 @@ uvicorn devshop_db:app --reload --port 8001
 Open Swagger UI: http://127.0.0.1:8000/docs (or :8001 for DB version)
 
 ## Endpoints
+- GET /health - API health check
 - GET /courses — list courses (with optional filters: max_price, active)
 - GET /courses/{id} — one course
 - POST /courses — create course

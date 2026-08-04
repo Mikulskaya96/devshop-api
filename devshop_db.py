@@ -9,6 +9,12 @@ load_dotenv()
 
 app = FastAPI(title = "DevShop DB")
 
+
+@app.get("/health")
+def health():
+    return {"status": "ok"} 
+
+
 def get_db_connection():
     return psycopg2.connect(
         host=os.getenv("DB_HOST", "localhost"),
