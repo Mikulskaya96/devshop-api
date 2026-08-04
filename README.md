@@ -43,10 +43,11 @@ Open Swagger UI: http://127.0.0.1:8000/docs (or :8001 for DB version)
   - Filters: `max_price`, `active` (optional)
   - Pagination: `limit` (max rows), `offset` (skip rows; used together with `limit`)
   - Example: `/courses?limit=2&offset=0` — first 2 courses
-  
+
 - GET /courses/{id} — one course
 - POST /courses — create course
 - PUT /courses/{id} — update course
 - DELETE /courses/{id} — delete course
+- Missing course returns **404** (HTTPException)
 
 

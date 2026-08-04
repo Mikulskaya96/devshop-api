@@ -1,5 +1,5 @@
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from pydantic import BaseModel
@@ -77,7 +77,7 @@ def get_courses_id(courses_id: int):
     cur.close()
     conn.close()
     if row is None:
-        return{"Error": "Not Found"}
+        raise HTTPException(status_code=404, detail="Course not found")
     return row
     
     
@@ -117,8 +117,8 @@ def  delete_course(courses_id: int):
     cur.close()
     conn.close()
     if deleted is None:
-        return {"Error": "Not Found"}
-    return {"message": deleted}
+        raise HTTPException(status_code=404, detail="Course not found")
+    return {"message": "deleted", "id": deleted["id"]}
 
 
 
@@ -139,7 +139,7 @@ def update_course(courses_id: int, update: Course):
     cur.close()
     conn.close()
     if row is None:
-        return{"Error": "Not found"}
+        raise HTTPException(status_code=404, detail="Course not found")
     return row
 
     
