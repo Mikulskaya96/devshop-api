@@ -61,7 +61,7 @@ def delete_course(courses_id: int):
     return{"error": "Not found"}
 
 
-@app.put("/courses/{courses_id}")# пометка: класс уже создан он выше,заново писать не нужно 
+@app.put("/courses/{courses_id}")
 def update_course(courses_id: int, update: Course):
     for course in courses:
         if course ["id"] == courses_id:
